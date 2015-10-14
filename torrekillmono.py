@@ -3,7 +3,7 @@
 import pilasengine
 import random
 
-TIEMPO = 6
+TIEMPO = 7
 fin_de_juego = False
 
 pilas = pilasengine.iniciar()
@@ -20,8 +20,15 @@ balas_simples = pilas.actores.Bala
 monos = []
 
 # Funciones
-def mono_destruido():
-    pass
+def mono_destruido(disparo, enemigo):
+ # Eliminar el mono alcanzado
+ enemigo.eliminar()
+ disparo.eliminar()
+ # Actualizar el marcador con un efecto bonito
+ puntos.escala = 0
+ puntos.escala = pilas.interpolar(1, duracion=0.5, tipo='rebote_final')
+ puntos.aumentar(1)
+    
 
 
 def crear_mono():
